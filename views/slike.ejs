@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Galerija slika</title>
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/Styles/style.css">
+  <link rel="stylesheet" href="/Styles/style_slike.css">
 </head>
 <body>
 <header>
@@ -22,20 +23,28 @@
 				LV1: bez upotrebe javascripta -->
 				<li><a href="../index.html">Početna</a></li>
 				<li><a href="../Pages/grafikon.html">Grafikoni</a></li>
-				<li><a href="../Pages/slike.html ">Slike</a></li>
+				<li><a href="slike ">Slike</a></li>
 				
 			</ul>
 		</nav>
 <h1>Galerija slika</h1>
 
 <section class="gallery">
-  <% images.forEach(image => { %>
-    <figure>
+  <% images.forEach((image, index) => { %>
+
+    <!-- normalna slika -->
+    <a href="#img<%= index %>">
       <img src="<%= image.url %>" alt="<%= image.title %>">
-      <figcaption><%= image.title %></figcaption>
-    </figure>
+    </a>
+
+    <!-- LIGHTBOX (skriven default) -->
+    <div id="img<%= index %>" class="lightbox">
+      <a href="#" class="close">✖</a>
+      <img src="<%= image.url %>" alt="<%= image.title %>">
+      <p><%= image.title %></p>
+    </div>
+
   <% }); %>
 </section>
-
 </body>
 </html>
